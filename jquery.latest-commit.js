@@ -11,9 +11,10 @@ jQuery(document).ready(function($){
       repoUrl = "http://github.com/" + username + '/' + repoName; // Gets your repo url
       $commit = $(
         '<div>' + // Needs to be wrapped.
+        // ADD DESIRED CLASSES TO HTML TAGS BELOW!
         '<a class="commit-file" href="#" target="_blank"></a></p>' + // Link to commit file
-        '<span>Commit Message: </span><span class="commit"></span>' +
-        '<p><a class="commit-link" href="#" target="_blank"></a></p>' +
+        '<span>Commit Message: </span><span class="commit"></span>' + // Displays commit message
+        '<p><a class="commit-link" href="#" target="_blank"></a></p>' + // Creates link to commit
         '</div>'
       );
     $commit.appendTo($container);
@@ -28,8 +29,8 @@ jQuery(document).ready(function($){
         var file = repo.files[0].filename; // Grabs the first filename
         var fileUrl = repo.files[0].blob_url; // URL to the aforementioned file
         $commit.find('.commit').text(repo.commit.message); // Outputs commit message
-        $commit.find('.commit-file').attr('href',fileUrl).text(file); //
-        $commit.find('.commit-link').attr('href',commitUrl).text(sha);
+        $commit.find('.commit-file').attr('href',fileUrl).text(file); // Adds file url to the changed file, and displays the file path/name
+        $commit.find('.commit-link').attr('href',commitUrl).text(sha); // Adds link to commit and commit SHA
       }
     });
   });
